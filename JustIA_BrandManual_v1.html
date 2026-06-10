@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JustIA — Manual de Marca v1.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0A0A0A;
+    --white: #FFFFFF;
+    --green-primary: #00FF85;
+    --green-mid: #00C463;
+    --green-dark: #0D4D2E;
+    --green-deep: #071F14;
+    --gray-100: #F4F4F2;
+    --gray-200: #E0E0DB;
+    --gray-400: #9C9C96;
+    --gray-600: #5A5A56;
+    --gray-800: #2C2C2A;
+    --ink: #111110;
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
+  }
+  body { font-family: var(--font-sans); background: var(--gray-100); color: var(--ink); font-size: 14px; line-height: 1.6; }
+
+  /* COVER */
+  .cover { background: var(--black); padding: 80px 64px 72px; position: relative; overflow: hidden; page-break-after: always; }
+  .cover::before { content: ''; position: absolute; top: -140px; right: -140px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,255,133,0.1) 0%, transparent 70%); pointer-events: none; }
+  .cover-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-primary); margin-bottom: 28px; font-weight: 600; }
+  .cover-logo { font-family: var(--font-sans); font-size: 72px; font-weight: 700; color: var(--white); letter-spacing: -3px; line-height: 1; margin-bottom: 8px; }
+  .cover-logo span { color: var(--green-primary); }
+  .cover-tagline { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 56px; }
+  .cover-divider { height: 0.5px; background: rgba(255,255,255,0.12); margin-bottom: 28px; }
+  .cover-title { font-size: 24px; font-weight: 300; color: var(--white); }
+  .cover-title strong { font-weight: 600; color: var(--green-primary); }
+  .cover-meta { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+
+  /* LAYOUT */
+  .page { max-width: 960px; margin: 0 auto; }
+  .section { padding: 64px; border-bottom: 0.5px solid var(--gray-200); background: var(--white); margin-bottom: 2px; }
+  .section-dark { background: var(--black); color: var(--white); }
+  .section-deepgreen { background: var(--green-deep); color: var(--white); }
+  .section-offwhite { background: var(--gray-100); }
+
+  .section-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 8px; font-weight: 700; }
+  .section-eyebrow-light { color: var(--green-primary); }
+  .section-title { font-size: 32px; font-weight: 700; color: var(--ink); margin-bottom: 10px; letter-spacing: -1px; }
+  .section-title-light { color: var(--white); }
+  .section-subtitle { font-size: 15px; color: var(--gray-600); max-width: 600px; line-height: 1.7; margin-bottom: 48px; }
+  .section-subtitle-light { color: rgba(255,255,255,0.55); }
+
+  /* TOC */
+  .toc { background: var(--white); padding: 48px 64px; border-bottom: 0.5px solid var(--gray-200); margin-bottom: 2px; }
+  .toc-title { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 24px; font-weight: 700; }
+  .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 32px; }
+  .toc-item { font-size: 13px; color: var(--gray-600); display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--gray-200); }
+  .toc-num { font-size: 10px; font-weight: 700; color: var(--green-mid); min-width: 20px; }
+
+  /* DIVIDER */
+  .divider { height: 0.5px; background: var(--gray-200); margin: 36px 0; }
+  .divider-dark { background: rgba(255,255,255,0.1); }
+
+  /* LOGO */
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+  .logo-box { border-radius: 8px; padding: 48px 36px; display: flex; flex-direction: column; align-items: center; gap: 14px; border: 0.5px solid var(--gray-200); }
+  .logo-box-dark { background: var(--black); border-color: transparent; }
+  .logo-box-white { background: var(--white); }
+  .logo-box-green { background: var(--green-primary); border-color: transparent; }
+  .logo-box-gray { background: #1A1A1A; }
+  .logo-render { font-family: var(--font-sans); font-size: 48px; font-weight: 700; letter-spacing: -2px; line-height: 1; }
+  .lr-white { color: var(--white); } .lr-white span { color: var(--green-primary); }
+  .lr-dark { color: var(--ink); } .lr-dark span { color: var(--green-mid); }
+  .lr-black { color: var(--black); } .lr-black span { color: var(--green-dark); }
+  .lr-mono { color: rgba(255,255,255,0.9); } .lr-mono span { color: rgba(255,255,255,0.35); }
+  .logo-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-400); }
+  .logo-label-light { color: rgba(255,255,255,0.3); }
+
+  .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .usage-card { border-radius: 8px; padding: 20px 22px; border: 0.5px solid var(--gray-200); }
+  .usage-card-ok { border-left: 3px solid var(--green-mid); background: #F6FBF8; }
+  .usage-card-no { border-left: 3px solid #E24B4A; background: #FEF5F5; }
+  .usage-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+  .ok-color { color: var(--green-mid); }
+  .no-color { color: #E24B4A; }
+  .usage-list { list-style: none; font-size: 13px; color: var(--gray-600); display: flex; flex-direction: column; gap: 6px; }
+  .usage-list li::before { content: '— '; }
+
+  /* PALETTE */
+  .palette-primary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  .palette-extended { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 10px; }
+  .swatch { border-radius: 8px; overflow: hidden; border: 0.5px solid rgba(0,0,0,0.07); }
+  .swatch-color { height: 88px; }
+  .swatch-sm .swatch-color { height: 52px; }
+  .swatch-info { padding: 12px 14px; background: var(--white); border-top: 0.5px solid var(--gray-200); }
+  .swatch-sm .swatch-info { padding: 9px 11px; }
+  .swatch-name { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .swatch-hex { font-size: 11px; font-family: 'Courier New', monospace; color: var(--gray-400); margin-bottom: 3px; }
+  .swatch-use { font-size: 11px; color: var(--gray-400); }
+
+  .combo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .combo-box { border-radius: 8px; overflow: hidden; border: 0.5px solid var(--gray-200); }
+  .combo-preview { padding: 22px; display: flex; align-items: center; justify-content: center; }
+  .combo-label { padding: 8px 12px; font-size: 11px; color: var(--gray-400); border-top: 0.5px solid var(--gray-200); background: var(--white); }
+
+  /* TYPOGRAPHY */
+  .type-scale { border: 0.5px solid var(--gray-200); border-radius: 10px; overflow: hidden; margin-bottom: 28px; }
+  .type-row-header { display: grid; grid-template-columns: 160px 1fr 110px; background: var(--gray-100); }
+  .type-row { display: grid; grid-template-columns: 160px 1fr 110px; border-top: 0.5px solid var(--gray-200); }
+  .type-cell { padding: 14px 18px; font-size: 12px; color: var(--gray-600); display: flex; align-items: center; }
+  .type-cell-header { padding: 11px 18px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-400); }
+  .type-cell-mid { border-left: 0.5px solid var(--gray-200); border-right: 0.5px solid var(--gray-200); }
+
+  /* KW */
+  .kw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 28px; }
+  .kw-card { border: 0.5px solid var(--gray-200); border-radius: 8px; padding: 20px; }
+  .kw-vertical { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green-mid); margin-bottom: 12px; }
+  .kw-list { display: flex; flex-wrap: wrap; gap: 5px; }
+  .kw-tag { background: var(--gray-100); border-radius: 4px; padding: 4px 9px; font-size: 11px; color: var(--gray-600); }
+  .kw-tag-brand { background: rgba(0,196,99,0.1); color: var(--green-dark); }
+
+  /* VOICE */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+  .voice-card { border-radius: 8px; padding: 22px; }
+  .voice-ok { background: rgba(0,255,133,0.05); border: 0.5px solid rgba(0,255,133,0.15); border-top: 3px solid var(--green-primary); }
+  .voice-no { background: rgba(226,75,74,0.05); border: 0.5px solid rgba(226,75,74,0.15); border-top: 3px solid #E24B4A; }
+  .voice-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+  .voice-quote { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.65; font-style: italic; padding: 10px 14px; border-left: 2px solid rgba(0,255,133,0.3); margin-bottom: 8px; }
+  .voice-quote-no { color: rgba(255,255,255,0.45); border-left-color: rgba(226,75,74,0.3); }
+
+  /* SOCIAL */
+  .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .social-card { border-radius: 8px; border: 0.5px solid var(--gray-200); overflow: hidden; }
+  .social-header { padding: 11px 16px; background: var(--gray-100); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-400); border-bottom: 0.5px solid var(--gray-200); }
+  .social-body { padding: 18px; }
+  .social-post { font-size: 13px; color: var(--ink); line-height: 1.65; margin-bottom: 8px; }
+  .social-tag { font-size: 11px; color: var(--gray-400); }
+  .post-divider { height: 0.5px; background: var(--gray-200); margin: 14px 0; }
+
+  /* EMAIL */
+  .email-preview { border: 0.5px solid var(--gray-200); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+  .email-chrome { background: var(--gray-100); padding: 12px 18px; border-bottom: 0.5px solid var(--gray-200); display: flex; align-items: center; gap: 8px; }
+  .email-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .email-body { background: var(--white); padding: 32px 36px; }
+  .email-text { font-size: 14px; color: var(--gray-600); line-height: 1.75; margin-bottom: 28px; }
+  .sig-sep { height: 0.5px; background: var(--gray-200); margin-bottom: 20px; }
+  .sig-name { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .sig-role { font-size: 13px; color: var(--gray-600); margin-bottom: 14px; }
+  .sig-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--ink); margin-bottom: 10px; }
+  .sig-logo span { color: var(--green-mid); }
+  .sig-contact { font-size: 12px; color: var(--gray-400); line-height: 2; }
+  .sig-contact a { color: var(--green-mid); text-decoration: none; }
+  .sig-vbar { display: inline-block; width: 1px; height: 10px; background: var(--gray-200); margin: 0 8px; vertical-align: middle; }
+
+  /* APPLICATIONS */
+  .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .app-mockup { border-radius: 8px; overflow: hidden; border: 0.5px solid var(--gray-200); }
+
+  /* PILLARS */
+  .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 36px; }
+  .pillar { border-radius: 8px; padding: 22px 18px; border: 0.5px solid rgba(0,255,133,0.18); background: rgba(0,255,133,0.04); }
+  .pillar-num { font-size: 36px; font-weight: 700; color: var(--green-primary); opacity: 0.35; line-height: 1; margin-bottom: 10px; letter-spacing: -2px; }
+  .pillar-name { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+  .pillar-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.55; }
+
+  /* ARCHETYPE */
+  .archetype-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .archetype-card { border: 0.5px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; }
+  .archetype-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); margin-bottom: 8px; }
+  .archetype-content { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .archetype-content strong { color: var(--green-primary); }
+
+  /* VOICE PILLARS */
+  .voice-pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 28px; }
+  .voice-pillar { border-radius: 8px; padding: 18px 16px; border: 0.5px solid rgba(0,255,133,0.18); background: rgba(0,255,133,0.04); }
+  .vp-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green-primary); margin-bottom: 8px; }
+  .vp-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+
+  /* RULES */
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .rule-card { background: var(--gray-100); border-radius: 8px; padding: 16px 20px; border: 0.5px solid var(--gray-200); }
+  .rule-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-400); margin-bottom: 10px; }
+  .rule-list { font-size: 12px; color: var(--gray-600); line-height: 1.9; }
+
+  /* CHIP */
+  .chip { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  .chip-green { background: rgba(0,196,99,0.15); color: var(--green-mid); }
+
+  /* BTN */
+  .btn { display: inline-block; padding: 9px 18px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; letter-spacing: 0.02em; }
+  .btn-primary { background: var(--green-primary); color: var(--black); border: none; }
+  .btn-outline { border: 1.5px solid var(--green-mid); color: var(--green-mid); background: transparent; }
+
+  /* FOOTER */
+  footer { background: var(--black); padding: 28px 64px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-size: 22px; font-weight: 700; color: var(--white); letter-spacing: -0.5px; }
+  .footer-logo span { color: var(--green-primary); }
+  .footer-meta { font-size: 12px; color: var(--gray-600); }
+
+  @media print {
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-eyebrow">Manual de Marca & Identidade Visual</p>
+  <div class="cover-logo">Just<span>IA</span></div>
+  <p class="cover-tagline">Inteligência aplicada. Do jeito do seu negócio.</p>
+  <div class="cover-divider"></div>
+  <p class="cover-title"><strong>Brand Guidelines v1.0</strong> — Documento institucional.</p>
+  <p class="cover-meta">Uso interno, comercial e digital · justiatech.com.br · São Paulo, Brasil</p>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <p class="toc-title">Índice</p>
+  <div class="toc-grid">
+    <div class="toc-item"><span class="toc-num">01</span> Essência da marca</div>
+    <div class="toc-item"><span class="toc-num">02</span> Logotipo & variações</div>
+    <div class="toc-item"><span class="toc-num">03</span> Paleta de cores</div>
+    <div class="toc-item"><span class="toc-num">04</span> Tipografia</div>
+    <div class="toc-item"><span class="toc-num">05</span> Palavras-chave por vertical</div>
+    <div class="toc-item"><span class="toc-num">06</span> Tom de voz</div>
+    <div class="toc-item"><span class="toc-num">07</span> Tom para redes sociais</div>
+    <div class="toc-item"><span class="toc-num">08</span> Assinatura de e-mail</div>
+    <div class="toc-item"><span class="toc-num">09</span> Aplicações visuais</div>
+  </div>
+</div>
+
+<!-- 01 ESSÊNCIA -->
+<div class="section section-dark">
+  <p class="section-eyebrow section-eyebrow-light">01 — Essência da marca</p>
+  <h2 class="section-title section-title-light">O que a JustIA representa.</h2>
+  <p class="section-subtitle section-subtitle-light">Antes de qualquer cor ou fonte — entender o que a marca precisa comunicar ao mercado.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-name">Precisão</div>
+      <div class="pillar-desc">Cada output entregue carrega a mesma lógica do primeiro. Sem improviso.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-name">Escala</div>
+      <div class="pillar-desc">10 casos ou 10.000 — mesma qualidade, custo unitário decrescente.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-name">Execução</div>
+      <div class="pillar-desc">Não vendemos tecnologia. Entregamos resultado finalizado.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <div class="pillar-name">Confiança</div>
+      <div class="pillar-desc">Operamos com a inteligência do cliente. Rastreabilidade total.</div>
+    </div>
+  </div>
+
+  <div class="divider divider-dark"></div>
+
+  <div class="archetype-grid">
+    <div class="archetype-card">
+      <p class="archetype-label">Posicionamento</p>
+      <p class="archetype-content">Empresa de inteligência aplicada que entrega trabalho cognitivo finalizado por agentes autônomos, cobrado por unidade de output — nunca por licença de software.</p>
+    </div>
+    <div class="archetype-card">
+      <p class="archetype-label">Arquétipo de marca</p>
+      <p class="archetype-content"><strong>O Sábio Executor.</strong> Não é o entusiasta de tecnologia nem o consultor genérico. É quem sabe mais — e entrega. Confiança vem de prova, não de promessa.</p>
+    </div>
+    <div class="archetype-card">
+      <p class="archetype-label">Personalidade</p>
+      <p class="archetype-content">Direta. Técnica sem ser fria. Confiante sem ser arrogante. Séria onde é necessário, acessível onde faz sentido. Nunca hype.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 02 LOGOTIPO -->
+<div class="section">
+  <p class="section-eyebrow">02 — Logotipo & variações</p>
+  <h2 class="section-title">Sistema de logo.</h2>
+  <p class="section-subtitle">O logo é bipartido: "Just" em peso regular ancora autoridade; "IA" em verde neon sinaliza a camada de inteligência aplicada. Essa tensão é intencional e não deve ser alterada.</p>
+
+  <div class="logo-grid">
+    <div class="logo-box logo-box-dark">
+      <div class="logo-render lr-white">Just<span>IA</span></div>
+      <span class="logo-label logo-label-light">Versão principal — fundo escuro</span>
+    </div>
+    <div class="logo-box logo-box-white">
+      <div class="logo-render lr-dark">Just<span>IA</span></div>
+      <span class="logo-label">Versão light — fundo branco/claro</span>
+    </div>
+    <div class="logo-box logo-box-green">
+      <div class="logo-render lr-black">Just<span>IA</span></div>
+      <span class="logo-label">Versão em fundo verde (uso especial)</span>
+    </div>
+    <div class="logo-box logo-box-gray">
+      <div class="logo-render lr-mono">Just<span>IA</span></div>
+      <span class="logo-label logo-label-light">Versão monocromática</span>
+    </div>
+  </div>
+
+  <div class="usage-grid">
+    <div class="usage-card usage-card-ok">
+      <p class="usage-title ok-color">✓ Uso correto</p>
+      <ul class="usage-list">
+        <li>Sempre com proporção original</li>
+        <li>Espaço de proteção = altura da letra "J"</li>
+        <li>Mínimo 80px de largura em digital</li>
+        <li>Mínimo 20mm em impressão</li>
+        <li>Sempre sobre fundos monocromáticos</li>
+        <li>Versão correta para cada tipo de fundo</li>
+      </ul>
+    </div>
+    <div class="usage-card usage-card-no">
+      <p class="usage-title no-color">✗ Uso proibido</p>
+      <ul class="usage-list">
+        <li>Não distorcer proporções do logo</li>
+        <li>Não alterar as cores definidas</li>
+        <li>Não adicionar sombras ou efeitos</li>
+        <li>Não colocar sobre fotos ou fundos complexos</li>
+        <li>Não rotacionar em nenhum ângulo</li>
+        <li>Não recriar a tipografia em outras fontes</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 03 CORES -->
+<div class="section">
+  <p class="section-eyebrow">03 — Paleta de cores</p>
+  <h2 class="section-title">Sistema cromático.</h2>
+  <p class="section-subtitle">Preto profundo como base de autoridade. Verde neon como sinal de inteligência ativa. Escala de cinzas para hierarquia. Branco cirúrgico para clareza e respiração visual.</p>
+
+  <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gray-400);margin-bottom:14px;">Cores primárias</p>
+  <div class="palette-primary">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0A0A0A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Black Core</div>
+        <div class="swatch-hex">#0A0A0A</div>
+        <div class="swatch-use">Fundo principal, texto sobre claro</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#00FF85;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">IA Green</div>
+        <div class="swatch-hex">#00FF85</div>
+        <div class="swatch-use">Acento principal, logo "IA", CTAs</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#00C463;border:0.5px solid #E0E0DB;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Signal Green</div>
+        <div class="swatch-hex">#00C463</div>
+        <div class="swatch-use">Links, labels, estados ativos</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FFFFFF;border:0.5px solid #E0E0DB;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">White</div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-use">Texto sobre escuro, fundos clean</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gray-400);margin:24px 0 12px;">Verdes de suporte</p>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px;">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0D4D2E;"></div>
+      <div class="swatch-info"><div class="swatch-name">Forest</div><div class="swatch-hex">#0D4D2E</div><div class="swatch-use">Fundos alternativos</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#071F14;"></div>
+      <div class="swatch-info"><div class="swatch-name">Deep Forest</div><div class="swatch-hex">#071F14</div><div class="swatch-use">Variante do preto</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E8F9F1;border:0.5px solid #E0E0DB;"></div>
+      <div class="swatch-info"><div class="swatch-name">Mint Tint</div><div class="swatch-hex">#E8F9F1</div><div class="swatch-use">Backgrounds de destaque</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F6FBF8;border:0.5px solid #E0E0DB;"></div>
+      <div class="swatch-info"><div class="swatch-name">Green Wash</div><div class="swatch-hex">#F6FBF8</div><div class="swatch-use">Cards de confirmação</div></div>
+    </div>
+  </div>
+
+  <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gray-400);margin-bottom:12px;">Escala de cinzas</p>
+  <div class="palette-extended">
+    <div class="swatch swatch-sm">
+      <div class="swatch-color" style="background:#F4F4F2;border:0.5px solid #E0E0DB;"></div>
+      <div class="swatch-info"><div class="swatch-name">Gray 100</div><div class="swatch-hex">#F4F4F2</div></div>
+    </div>
+    <div class="swatch swatch-sm">
+      <div class="swatch-color" style="background:#E0E0DB;"></div>
+      <div class="swatch-info"><div class="swatch-name">Gray 200</div><div class="swatch-hex">#E0E0DB</div></div>
+    </div>
+    <div class="swatch swatch-sm">
+      <div class="swatch-color" style="background:#9C9C96;"></div>
+      <div class="swatch-info"><div class="swatch-name">Gray 400</div><div class="swatch-hex">#9C9C96</div></div>
+    </div>
+    <div class="swatch swatch-sm">
+      <div class="swatch-color" style="background:#5A5A56;"></div>
+      <div class="swatch-info"><div class="swatch-name">Gray 600</div><div class="swatch-hex">#5A5A56</div></div>
+    </div>
+    <div class="swatch swatch-sm">
+      <div class="swatch-color" style="background:#2C2C2A;"></div>
+      <div class="swatch-info"><div class="swatch-name">Gray 800</div><div class="swatch-hex">#2C2C2A</div></div>
+    </div>
+    <div class="swatch swatch-sm">
+      <div class="swatch-color" style="background:#111110;"></div>
+      <div class="swatch-info"><div class="swatch-name">Ink</div><div class="swatch-hex">#111110</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gray-400);margin-bottom:14px;">Combinações aprovadas</p>
+  <div class="combo-grid">
+    <div class="combo-box">
+      <div class="combo-preview" style="background:#0A0A0A;">
+        <span style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-1px;">Just<span style="color:#00FF85;">IA</span></span>
+      </div>
+      <div class="combo-label">Preto + IA Green ✓</div>
+    </div>
+    <div class="combo-box">
+      <div class="combo-preview" style="background:#00FF85;">
+        <span style="font-size:22px;font-weight:700;color:#0A0A0A;letter-spacing:-1px;">JustIA</span>
+      </div>
+      <div class="combo-label">IA Green + Preto ✓</div>
+    </div>
+    <div class="combo-box">
+      <div class="combo-preview" style="background:#F4F4F2;">
+        <span style="font-size:22px;font-weight:700;color:#111110;letter-spacing:-1px;">Just<span style="color:#00C463;">IA</span></span>
+      </div>
+      <div class="combo-label">Off-white + Ink ✓</div>
+    </div>
+    <div class="combo-box">
+      <div class="combo-preview" style="background:#071F14;">
+        <span style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-1px;">Just<span style="color:#00FF85;">IA</span></span>
+      </div>
+      <div class="combo-label">Deep Forest + White ✓</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 TIPOGRAFIA -->
+<div class="section">
+  <p class="section-eyebrow">04 — Tipografia</p>
+  <h2 class="section-title">Sistema tipográfico.</h2>
+  <p class="section-subtitle">Uma família principal para todo o sistema. Peso como hierarquia. Espaçamento como respiração. Sem serifa — clareza executiva acima de tudo.</p>
+
+  <div style="border:0.5px solid var(--gray-200);border-radius:10px;padding:28px 32px;margin-bottom:14px;background:var(--gray-100);">
+    <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gray-400);margin-bottom:6px;">Fonte primária — todas as aplicações</p>
+    <p style="font-family:'Inter',sans-serif;font-size:52px;font-weight:700;letter-spacing:-2px;color:var(--ink);line-height:1.05;margin-bottom:4px;">Inter</p>
+    <p style="font-size:13px;color:var(--gray-400);margin-bottom:18px;">Google Fonts · Gratuita · Pesos utilizados: 300 Light · 400 Regular · 500 Medium · 600 SemiBold · 700 Bold</p>
+    <div style="height:0.5px;background:var(--gray-200);margin-bottom:16px;"></div>
+    <p style="font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--gray-600);line-height:1.75;max-width:520px;">Inter foi projetada para interfaces digitais. Excelente leiturabilidade em qualquer tamanho e resolução. Geométrica sem ser mecânica — o equilíbrio certo para uma empresa de inteligência aplicada que precisa comunicar precisão e confiança.</p>
+  </div>
+
+  <div style="border:0.5px solid var(--gray-200);border-radius:10px;padding:28px 32px;margin-bottom:36px;background:var(--gray-100);">
+    <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gray-400);margin-bottom:6px;">Fonte de apoio — uso editorial restrito</p>
+    <p style="font-family:'DM Serif Display',serif;font-size:48px;color:var(--ink);line-height:1.05;margin-bottom:4px;">DM Serif Display</p>
+    <p style="font-size:13px;color:var(--gray-400);">Uso restrito: títulos de manifesto, citações institucionais de alto impacto, capas de apresentações premium. Nunca em interfaces de produto.</p>
+  </div>
+
+  <div class="type-scale">
+    <div class="type-row-header">
+      <div class="type-cell-header">Nível</div>
+      <div class="type-cell-header" style="border-left:0.5px solid var(--gray-200);border-right:0.5px solid var(--gray-200);">Amostra</div>
+      <div class="type-cell-header">Especificação</div>
+    </div>
+    <div class="type-row">
+      <div class="type-cell">Display</div>
+      <div class="type-cell type-cell-mid" style="font-size:38px;font-weight:700;letter-spacing:-1.5px;padding:16px 18px;">Inteligência aplicada.</div>
+      <div class="type-cell" style="font-size:11px;line-height:1.9;color:var(--gray-400);">Inter 700<br>34–48px<br>LS: −1.5px</div>
+    </div>
+    <div class="type-row">
+      <div class="type-cell">Heading</div>
+      <div class="type-cell type-cell-mid" style="font-size:24px;font-weight:600;letter-spacing:-0.5px;padding:16px 18px;">Execução em qualquer escala.</div>
+      <div class="type-cell" style="font-size:11px;line-height:1.9;color:var(--gray-400);">Inter 600<br>20–26px<br>LS: −0.5px</div>
+    </div>
+    <div class="type-row">
+      <div class="type-cell">Subheading</div>
+      <div class="type-cell type-cell-mid" style="font-size:17px;font-weight:500;padding:16px 18px;">Consistência sem variação.</div>
+      <div class="type-cell" style="font-size:11px;line-height:1.9;color:var(--gray-400);">Inter 500<br>15–18px<br>LS: 0</div>
+    </div>
+    <div class="type-row">
+      <div class="type-cell">Body</div>
+      <div class="type-cell type-cell-mid" style="font-size:14px;font-weight:400;line-height:1.7;padding:16px 18px;">Capturamos a lógica da sua empresa e operamos em qualquer volume, com a mesma precisão do primeiro caso.</div>
+      <div class="type-cell" style="font-size:11px;line-height:1.9;color:var(--gray-400);">Inter 400<br>14–15px<br>LH: 1.7</div>
+    </div>
+    <div class="type-row">
+      <div class="type-cell">Caption</div>
+      <div class="type-cell type-cell-mid" style="font-size:12px;color:#9C9C96;padding:16px 18px;">Dados processados em 847ms · Confiança 98.4% · 2.847 processos ativos</div>
+      <div class="type-cell" style="font-size:11px;line-height:1.9;color:var(--gray-400);">Inter 400<br>11–12px<br>LH: 1.6</div>
+    </div>
+    <div class="type-row">
+      <div class="type-cell">Label / Eyebrow</div>
+      <div class="type-cell type-cell-mid" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:#9C9C96;padding:16px 18px;">Produto · Jurídico · Recuperação · Atendimento</div>
+      <div class="type-cell" style="font-size:11px;line-height:1.9;color:var(--gray-400);">Inter 700<br>10px caps<br>LS: 0.18em</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 PALAVRAS-CHAVE -->
+<div class="section">
+  <p class="section-eyebrow">05 — Palavras-chave por vertical</p>
+  <h2 class="section-title">Vocabulário da marca.</h2>
+  <p class="section-subtitle">Cada vertical tem seu campo semântico. A identidade visual e o tom de voz devem ressoar com as palavras que esse público já usa internamente no dia a dia.</p>
+
+  <div class="kw-grid">
+    <div class="kw-card">
+      <div class="kw-vertical">Jurídico (vertical origem)</div>
+      <div class="kw-list">
+        <span class="kw-tag">contencioso</span><span class="kw-tag">peça jurídica</span><span class="kw-tag">prognóstico</span><span class="kw-tag">recursividade</span><span class="kw-tag">publicação</span><span class="kw-tag">citação</span><span class="kw-tag">protocolo</span><span class="kw-tag">sentença</span><span class="kw-tag">massa</span><span class="kw-tag">carteira</span><span class="kw-tag">DJE</span><span class="kw-tag">prazo</span>
+      </div>
+    </div>
+    <div class="kw-card">
+      <div class="kw-vertical">Recuperação de crédito / Cobrança</div>
+      <div class="kw-list">
+        <span class="kw-tag">inadimplência</span><span class="kw-tag">devedor</span><span class="kw-tag">viabilidade</span><span class="kw-tag">rota de cobrança</span><span class="kw-tag">provisão</span><span class="kw-tag">negociação</span><span class="kw-tag">carteira</span><span class="kw-tag">liquidação</span><span class="kw-tag">scoring</span><span class="kw-tag">régua</span>
+      </div>
+    </div>
+    <div class="kw-card">
+      <div class="kw-vertical">Atendimento institucional</div>
+      <div class="kw-list">
+        <span class="kw-tag">Procon</span><span class="kw-tag">ouvidoria</span><span class="kw-tag">resposta padrão</span><span class="kw-tag">SLA</span><span class="kw-tag">NPS</span><span class="kw-tag">reclamação</span><span class="kw-tag">resolução</span><span class="kw-tag">consumidor.gov</span><span class="kw-tag">incidência</span><span class="kw-tag">tempo médio</span>
+      </div>
+    </div>
+    <div class="kw-card">
+      <div class="kw-vertical">RH / Recrutamento</div>
+      <div class="kw-list">
+        <span class="kw-tag">triagem</span><span class="kw-tag">candidatura</span><span class="kw-tag">avaliação</span><span class="kw-tag">fit cultural</span><span class="kw-tag">onboarding</span><span class="kw-tag">volume</span><span class="kw-tag">critério</span><span class="kw-tag">consistência</span><span class="kw-tag">headcount</span>
+      </div>
+    </div>
+    <div class="kw-card">
+      <div class="kw-vertical">Seguros / Sinistros</div>
+      <div class="kw-list">
+        <span class="kw-tag">análise de sinistro</span><span class="kw-tag">cobertura</span><span class="kw-tag">regulação</span><span class="kw-tag">fraude</span><span class="kw-tag">parecer</span><span class="kw-tag">indenização</span><span class="kw-tag">documentação</span><span class="kw-tag">propensão</span>
+      </div>
+    </div>
+    <div class="kw-card">
+      <div class="kw-vertical">Bancos / Fintech / Telecom</div>
+      <div class="kw-list">
+        <span class="kw-tag">compliance</span><span class="kw-tag">KYC</span><span class="kw-tag">onboarding digital</span><span class="kw-tag">churn</span><span class="kw-tag">retenção</span><span class="kw-tag">análise de risco</span><span class="kw-tag">portabilidade</span><span class="kw-tag">regulatório</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#F6FBF8;border:0.5px solid rgba(0,196,99,0.25);border-radius:10px;padding:20px 24px;">
+    <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--green-mid);margin-bottom:12px;">Vocabulário universal — todas as verticais</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;">
+      <span class="kw-tag kw-tag-brand">output cognitivo</span>
+      <span class="kw-tag kw-tag-brand">alavancagem</span>
+      <span class="kw-tag kw-tag-brand">consistência em escala</span>
+      <span class="kw-tag kw-tag-brand">custo unitário</span>
+      <span class="kw-tag kw-tag-brand">rastreabilidade</span>
+      <span class="kw-tag kw-tag-brand">inteligência embarcada</span>
+      <span class="kw-tag kw-tag-brand">entrega finalizada</span>
+      <span class="kw-tag kw-tag-brand">execução autônoma</span>
+      <span class="kw-tag kw-tag-brand">por unidade</span>
+      <span class="kw-tag kw-tag-brand">amplificação</span>
+      <span class="kw-tag kw-tag-brand">inteligência aplicada</span>
+    </div>
+  </div>
+</div>
+
+<!-- 06 TOM DE VOZ -->
+<div class="section section-dark">
+  <p class="section-eyebrow section-eyebrow-light">06 — Tom de voz</p>
+  <h2 class="section-title section-title-light">Como a JustIA fala.</h2>
+  <p class="section-subtitle section-subtitle-light">Tom executivo, direto, sem rodeios. A marca não se desculpa, não enfeita, não vende sonhos. Entrega argumento.</p>
+
+  <div class="voice-pillar-grid">
+    <div class="voice-pillar">
+      <div class="vp-name">Direta</div>
+      <div class="vp-desc">Vai ao ponto. Sem qualificativos desnecessários. A frase termina quando o argumento termina.</div>
+    </div>
+    <div class="voice-pillar">
+      <div class="vp-name">Técnica</div>
+      <div class="vp-desc">Usa o vocabulário do interlocutor. Nunca explica o óbvio. Demonstra domínio sem didatismo.</div>
+    </div>
+    <div class="voice-pillar">
+      <div class="vp-name">Confiante</div>
+      <div class="vp-desc">Afirma. Não sugere, não promete sem prova, não questiona a própria capacidade.</div>
+    </div>
+    <div class="voice-pillar">
+      <div class="vp-name">Humana</div>
+      <div class="vp-desc">Não é robótica. Reconhece trade-offs. Fala com quem decide, não para quem obedece.</div>
+    </div>
+  </div>
+
+  <div class="divider divider-dark"></div>
+
+  <div class="voice-grid">
+    <div class="voice-card voice-ok">
+      <p class="voice-label" style="color:var(--green-primary);">✓ JustIA fala assim</p>
+      <div class="voice-quote">"A JustIA entrega a peça. Você assina."</div>
+      <div class="voice-quote">"De 300 para 80 advogados. Mais output, não menos."</div>
+      <div class="voice-quote">"Você define a regra. Nós executamos em qualquer volume."</div>
+      <div class="voice-quote">"Cobramos por unidade entregue — não por acesso."</div>
+      <div class="voice-quote">"A inteligência é sua. A execução é nossa."</div>
+    </div>
+    <div class="voice-card voice-no">
+      <p class="voice-label" style="color:#E24B4A;">✗ JustIA nunca fala assim</p>
+      <div class="voice-quote voice-quote-no">"Nossa plataforma revolucionária de IA vai transformar..."</div>
+      <div class="voice-quote voice-quote-no">"Utilizamos tecnologia de ponta para empoderar equipes..."</div>
+      <div class="voice-quote voice-quote-no">"Somos apaixonados por inovação e por nossos clientes!"</div>
+      <div class="voice-quote voice-quote-no">"Podemos ajudar a potencializar o seu negócio com IA."</div>
+      <div class="voice-quote voice-quote-no">"Ecossistema colaborativo de soluções disruptivas."</div>
+    </div>
+  </div>
+
+  <div class="divider divider-dark"></div>
+
+  <div class="rules-grid">
+    <div class="rule-card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);">
+      <div class="rule-label" style="color:rgba(255,255,255,0.3);">Estrutura de frase ideal</div>
+      <div class="rule-list" style="color:rgba(255,255,255,0.6);">
+        Sujeito claro + verbo ativo + resultado concreto.<br>
+        Frases curtas. Pontos finais. Sem reticências.<br>
+        Dado quantitativo sempre que disponível.<br>
+        Nunca termine com pergunta retórica.
+      </div>
+    </div>
+    <div class="rule-card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);">
+      <div class="rule-label" style="color:rgba(255,255,255,0.3);">Palavras proibidas</div>
+      <div class="rule-list" style="color:rgba(255,255,255,0.6);">
+        Revolucionário · Disruptivo · Ecossistema<br>
+        Empoderar · Transformar · Potencializar<br>
+        Apaixonado · Inovador · Soluções<br>
+        "De ponta" · "Estado da arte" · "Gamechanger"
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 REDES SOCIAIS -->
+<div class="section">
+  <p class="section-eyebrow">07 — Tom para redes sociais</p>
+  <h2 class="section-title">Voz digital por canal.</h2>
+  <p class="section-subtitle">Cada plataforma tem uma cadência. O tom é sempre JustIA — o que muda é o formato, o ritmo e o nível de profundidade.</p>
+
+  <div class="social-grid">
+    <div class="social-card">
+      <div class="social-header">LinkedIn — canal principal</div>
+      <div class="social-body">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green-mid);margin-bottom:8px;">Tipo: Dado + Tese</p>
+        <p class="social-post">300 advogados. Depois, 80.<br>Mesmo escritório. Mais output.<br><br>Não é sobre cortar gente — é sobre onde a inteligência humana faz diferença real. O contencioso de massa não precisa de mais pessoas. Precisa de consistência.</p>
+        <p class="social-tag">#InteligênciaAplicada #Jurídico #JustIA</p>
+        <div class="post-divider"></div>
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green-mid);margin-bottom:8px;">Tipo: Provocação executiva</p>
+        <p class="social-post">Sua empresa tem dados. Tem sistemas. Tem reuniões sobre os dados e os sistemas.<br><br>Mas ainda depende de uma pessoa específica para tomar decisão.<br><br>Esse é o problema que a JustIA resolve.</p>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-header">Instagram — presença institucional</div>
+      <div class="social-body">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green-mid);margin-bottom:8px;">Post: Frase manifesto</p>
+        <p class="social-post" style="font-size:15px;font-weight:600;">"Inteligência aplicada.<br>Do jeito do seu negócio."</p>
+        <p style="font-size:12px;color:var(--gray-400);margin-top:6px;margin-bottom:14px;">Visual: fundo preto + logo + tagline. Limpo. Sem poluição.</p>
+        <div class="post-divider"></div>
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green-mid);margin-bottom:8px;">Tom Stories / Reels</p>
+        <p class="social-post">Curto, direto. Uma afirmação por tela. Dados reais quando possível. Sem emoji excessivo. Nunca hype.</p>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-header">X (Twitter) — pensamentos e teses curtas</div>
+      <div class="social-body">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green-mid);margin-bottom:8px;">Formato: Assertiva + dado</p>
+        <p class="social-post">A maioria das empresas paga salário de advogado para produzir petição padrão.<br><br>Isso acabou.</p>
+        <div class="post-divider"></div>
+        <p class="social-post">O problema não é falta de IA.<br>É falta de critério para operá-la.<br><br>JustIA embarca o critério da sua empresa.</p>
+      </div>
+    </div>
+    <div class="social-card">
+      <div class="social-header">Newsletter / Blog — autoridade de longo prazo</div>
+      <div class="social-body">
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green-mid);margin-bottom:8px;">Tom editorial</p>
+        <p class="social-post">Mais longo, mais técnico. Escreve para diretores e C-levels. Mostra o raciocínio por trás das decisões. Cita dados internos quando disponíveis. Termina com conclusão acionável — nunca com pergunta retórica.</p>
+        <p style="font-size:12px;color:var(--gray-400);margin-top:10px;font-weight:600;">Frequência ideal: 2× por mês. Consistência > volume.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--gray-100);border-radius:10px;padding:20px 24px;border:0.5px solid var(--gray-200);">
+    <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gray-600);margin-bottom:12px;">Regras universais para todos os canais</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;color:var(--gray-600);line-height:1.9;">
+      <div>
+        ✓ Frases curtas. Pontos finais. Sem reticências.<br>
+        ✓ Dado concreto quando disponível<br>
+        ✓ Falar sobre output, não sobre processo interno
+      </div>
+      <div>
+        ✗ Emojis excessivos ou fora de contexto<br>
+        ✗ Linguagem de startup motivacional<br>
+        ✗ "Revolucionar", "disruptivo", "ecossistema"
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 ASSINATURA EMAIL -->
+<div class="section">
+  <p class="section-eyebrow">08 — Assinatura de e-mail</p>
+  <h2 class="section-title">Modelo de assinatura.</h2>
+  <p class="section-subtitle">Limpa, sem imagem, compatível com todos os clientes de e-mail. Hierarquia clara: pessoa → cargo → empresa → contato. Sem adornos.</p>
+
+  <div class="email-preview">
+    <div class="email-chrome">
+      <div class="email-dot" style="background:#FF5F57;"></div>
+      <div class="email-dot" style="background:#FFBD2E;"></div>
+      <div class="email-dot" style="background:#28C840;"></div>
+      <div style="flex:1;height:11px;background:var(--gray-200);border-radius:4px;margin-left:8px;"></div>
+    </div>
+    <div class="email-body">
+      <p style="font-size:12px;color:var(--gray-400);margin-bottom:16px;">De: nome@justiatech.com.br &nbsp;·&nbsp; Para: cliente@empresa.com.br</p>
+      <p class="email-text">Segue em anexo o relatório de análise das 847 peças processadas esta semana. Taxa de aprovação no protocolo: 98,4%. Os 1,6% restantes estão detalhados no arquivo com flag para revisão manual.</p>
+      <div class="sig-sep"></div>
+      <div class="sig-name">[Nome Sobrenome]</div>
+      <div class="sig-role">[Cargo] · JustIA</div>
+      <div style="height:12px;"></div>
+      <div class="sig-logo">Just<span>IA</span></div>
+      <div class="sig-contact">
+        <a href="#">nome@justiatech.com.br</a>
+        <span class="sig-vbar"></span>
+        +55 (11) [número]<br>
+        <a href="#">justiatech.com.br</a>
+        <span class="sig-vbar"></span>
+        São Paulo, SP · Brasil
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--gray-100);border-radius:10px;padding:18px 22px;border:0.5px solid var(--gray-200);">
+    <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gray-400);margin-bottom:14px;">Especificações técnicas</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:12px;color:var(--gray-600);line-height:2;">
+      <div><strong style="color:var(--ink);">Tipografia</strong><br>Fonte: Arial ou Helvetica Neue<br>Nome: 14px Bold<br>Cargo: 13px Regular<br>Contato: 12px Regular</div>
+      <div><strong style="color:var(--ink);">Cores</strong><br>Logo "Just": #2C2C2A<br>Logo "IA": #00C463<br>Links: #00C463<br>Texto secundário: #9C9C96</div>
+      <div><strong style="color:var(--ink);">Proibições</strong><br>Sem foto de perfil<br>Sem banner ou imagem<br>Sem citação motivacional<br>Sem redes sociais pessoais</div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;background:var(--black);border-radius:10px;padding:24px 28px;">
+    <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--green-primary);margin-bottom:14px;">Código HTML da assinatura</p>
+    <pre style="font-size:11px;color:rgba(255,255,255,0.6);line-height:1.8;white-space:pre-wrap;font-family:'Courier New',monospace;">&lt;table cellpadding="0" cellspacing="0" border="0"&gt;
+  &lt;tr&gt;&lt;td style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#111110;"&gt;
+    [Nome Sobrenome]
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td style="font-size:13px;color:#5A5A56;"&gt;
+    [Cargo] · JustIA
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td style="padding:12px 0 0;"&gt;
+    &lt;span style="font-size:17px;font-weight:bold;color:#111110;"&gt;Just&lt;/span&gt;
+    &lt;span style="font-size:17px;font-weight:bold;color:#00C463;"&gt;IA&lt;/span&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td style="font-size:12px;color:#9C9C96;line-height:1.9;"&gt;
+    &lt;a href="mailto:nome@justiatech.com.br" style="color:#00C463;"&gt;nome@justiatech.com.br&lt;/a&gt;
+    &amp;nbsp;·&amp;nbsp; +55 (11) XXXX-XXXX &lt;br&gt;
+    &lt;a href="https://justiatech.com.br" style="color:#00C463;"&gt;justiatech.com.br&lt;/a&gt;
+    &amp;nbsp;·&amp;nbsp; São Paulo, SP
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+  </div>
+</div>
+
+<!-- 09 APLICAÇÕES -->
+<div class="section">
+  <p class="section-eyebrow">09 — Aplicações visuais</p>
+  <h2 class="section-title">Padrões de interface e material.</h2>
+  <p class="section-subtitle">Como o sistema visual se traduz em produto digital, apresentações e materiais institucionais. Consistência é não-negociável.</p>
+
+  <div class="app-grid">
+    <div class="app-mockup">
+      <div style="background:#0A0A0A;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid rgba(255,255,255,0.06);">
+        <span style="font-size:16px;font-weight:700;color:#fff;letter-spacing:-0.5px;">Just<span style="color:#00FF85;">IA</span></span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="chip chip-green">Ao vivo</span>
+          <span style="font-size:11px;color:rgba(255,255,255,0.3);">Recovery Manager</span>
+        </div>
+      </div>
+      <div style="padding:18px;background:#0D0D0D;">
+        <p style="font-size:9px;text-transform:uppercase;letter-spacing:0.14em;font-weight:700;color:rgba(255,255,255,0.25);margin-bottom:14px;">Carteira ativa · Análise em tempo real</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+          <div style="background:#171717;border-radius:6px;padding:14px;border:0.5px solid rgba(255,255,255,0.06);">
+            <p style="font-size:22px;font-weight:700;color:#00FF85;margin-bottom:2px;">2.847</p>
+            <p style="font-size:10px;color:rgba(255,255,255,0.3);">Processos ativos</p>
+          </div>
+          <div style="background:#171717;border-radius:6px;padding:14px;border:0.5px solid rgba(255,255,255,0.06);">
+            <p style="font-size:22px;font-weight:700;color:#fff;margin-bottom:2px;">98,4%</p>
+            <p style="font-size:10px;color:rgba(255,255,255,0.3);">Taxa aprovação</p>
+          </div>
+          <div style="background:#171717;border-radius:6px;padding:14px;border:0.5px solid rgba(255,255,255,0.06);">
+            <p style="font-size:22px;font-weight:700;color:#fff;margin-bottom:2px;">847ms</p>
+            <p style="font-size:10px;color:rgba(255,255,255,0.3);">Tempo médio</p>
+          </div>
+        </div>
+        <div style="background:#171717;border-radius:6px;padding:14px;border:0.5px solid rgba(255,255,255,0.06);">
+          <p style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Últimas análises</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;">
+              <span style="color:rgba(255,255,255,0.55);">Devedor #4721 · R$ 48.200</span>
+              <span style="color:#00C463;font-weight:700;">Executar</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;">
+              <span style="color:rgba(255,255,255,0.55);">Devedor #4718 · R$ 12.800</span>
+              <span style="color:#9C9C96;font-weight:700;">Negociar</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;">
+              <span style="color:rgba(255,255,255,0.55);">Devedor #4715 · R$ 3.200</span>
+              <span style="color:rgba(255,255,255,0.2);font-weight:700;">Provisionar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-mockup">
+      <div style="background:var(--black);padding:26px 28px;">
+        <p style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:rgba(0,255,133,0.6);margin-bottom:10px;">JustIA · Apresentação comercial</p>
+        <p style="font-size:30px;font-weight:700;color:var(--white);letter-spacing:-1.2px;line-height:1.15;margin-bottom:8px;">Inteligência que<br>executa por você.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:24px;">Entrega cognitiva em escala.<br>Cobrado por unidade.</p>
+        <div style="display:flex;gap:10px;margin-bottom:24px;">
+          <span class="btn btn-primary">Agendar demo</span>
+          <span class="btn btn-outline">Ver materiais</span>
+        </div>
+        <div style="border-top:0.5px solid rgba(255,255,255,0.08);padding-top:14px;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:14px;font-weight:700;color:var(--white);letter-spacing:-0.5px;">Just<span style="color:#00FF85;">IA</span></span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.2);">justiatech.com.br</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-label">Regras de interface digital</div>
+      <div class="rule-list">
+        Fundo padrão: #0A0A0A ou #FFFFFF<br>
+        Bordas sempre 0.5px, nunca 2px ou mais<br>
+        Border-radius padrão: 6–8px<br>
+        Nunca usar gradientes no logo<br>
+        CTA primário sempre em IA Green (#00FF85)
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-label">Regras de material impresso</div>
+      <div class="rule-list">
+        Logo mínimo: 20mm de largura<br>
+        Papel: couchê fosco ou offset branco<br>
+        Pantone mais próximo do verde: 802 C<br>
+        Margem mínima de segurança: 12mm<br>
+        Nunca usar fundo colorido sem aprovação
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Just<span>IA</span></div>
+  <div class="footer-meta">Brand Guidelines v1.0 · Documento interno e institucional · justiatech.com.br</div>
+</footer>
+
+</div>
+</body>
+</html>
